@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>本周AI实时新闻 · 2026.6.8–6.11</title>
+<style>
+  :root{
+    --ink:#1d1d1f; --ink-2:#6e6e73; --ink-3:#86868b;
+    --bg:#ffffff; --bg-soft:#f5f5f7; --line:rgba(0,0,0,.08);
+    --blue:#0071e3; --radius:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+    color:var(--ink);background:var(--bg);
+    -webkit-font-smoothing:antialiased;line-height:1.6;
+  }
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:99;
+    backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+    background:rgba(255,255,255,.72);border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:980px;margin:0 auto;padding:0 22px;height:48px;display:flex;align-items:center;justify-content:space-between}
+  .nav .brand{font-size:14px;font-weight:600;letter-spacing:.2px}
+  .nav .date{font-size:12px;color:var(--ink-3)}
+  /* ---------- hero ---------- */
+  .hero{
+    background:#000;color:#f5f5f7;text-align:center;
+    padding:110px 22px 120px;overflow:hidden;position:relative;
+  }
+  .hero::after{
+    content:"";position:absolute;left:50%;bottom:-340px;transform:translateX(-50%);
+    width:900px;height:520px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(0,113,227,.45),rgba(0,113,227,0));
+    filter:blur(10px);pointer-events:none;
+  }
+  .hero .eyebrow{font-size:14px;font-weight:600;color:#86868b;letter-spacing:.18em;text-transform:uppercase}
+  .hero h1{
+    margin:18px auto 14px;max-width:760px;
+    font-size:clamp(40px,7vw,72px);font-weight:700;letter-spacing:-.02em;line-height:1.08;
+    background:linear-gradient(180deg,#fff 55%,#a9b6c9);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{font-size:clamp(17px,2.4vw,22px);color:#a1a1a6;max-width:640px;margin:0 auto}
+  .hero .meta{margin-top:30px;font-size:13px;color:#6e6e73;letter-spacing:.04em}
+  /* ---------- key stats strip ---------- */
+  .strip{background:var(--bg-soft);}
+  .strip-inner{max-width:980px;margin:0 auto;padding:54px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center}
+  .strip b{display:block;font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.02em}
+  .strip span{font-size:14px;color:var(--ink-2)}
+  /* ---------- sections ---------- */
+  .section{max-width:980px;margin:0 auto;padding:88px 22px 10px}
+  .section-head{margin-bottom:40px}
+  .section-head .kicker{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:.12em;text-transform:uppercase}
+  .section-head h2{font-size:clamp(28px,4.6vw,44px);font-weight:700;letter-spacing:-.02em;margin-top:8px}
+  .section-head p{color:var(--ink-2);margin-top:8px;font-size:17px;max-width:620px}
+  /* ---------- cards ---------- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{
+    background:var(--bg-soft);border-radius:var(--radius);padding:30px 30px 26px;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(0,0,0,.10)}
+  .card.feature{grid-column:1/-1;background:#000;color:#f5f5f7}
+  .card.feature .body{color:#a1a1a6}
+  .tagline{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .pill{
+    font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--blue);
+    background:rgba(0,113,227,.10);padding:4px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .card.feature .pill{background:rgba(10,132,255,.18);color:#6cb0ff}
+  .time{font-size:12px;color:var(--ink-3)}
+  .card.feature .time{color:#86868b}
+  .card h3{font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin-bottom:10px}
+  .card.feature h3{font-size:clamp(24px,3.4vw,32px)}
+  .body{font-size:15px;color:var(--ink-2)}
+  /* ---------- source links ---------- */
+  .src{
+    margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:12px;display:flex;align-items:center;
+  }
+  .src a{
+    color:var(--ink-3);text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+    transition:color .25s;
+  }
+  .src a::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.55}
+  .src a::after{content:"↗";font-size:12px;opacity:.55;transition:transform .25s,opacity .25s}
+  .src a:hover{color:var(--blue)}
+  .src a:hover::after{transform:translate(2px,-2px);opacity:1}
+  .card.feature .src{border-color:rgba(255,255,255,.14)}
+  .card.feature .src a{color:#6e6e73}
+  .card.feature .src a:hover{color:#6cb0ff}
+  /* ---------- trends ---------- */
+  .trends{background:#000;color:#f5f5f7;margin-top:96px}
+  .trends-inner{max-width:980px;margin:0 auto;padding:96px 22px}
+  .trends .kicker{color:#6cb0ff}
+  .trends h2{color:#f5f5f7}
+  .trend-list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .trend{background:#161617;border-radius:var(--radius);padding:30px}
+  .trend .num{
+    font-size:13px;font-weight:700;color:#6cb0ff;letter-spacing:.1em;margin-bottom:14px;display:block;
+  }
+  .trend h4{font-size:19px;font-weight:700;margin-bottom:8px}
+  .trend p{font-size:14px;color:#a1a1a6}
+  /* ---------- footer ---------- */
+  footer{background:var(--bg-soft)}
+  .foot-inner{max-width:980px;margin:0 auto;padding:34px 22px;font-size:12px;color:var(--ink-3);line-height:1.8}
+  .foot-inner b{color:var(--ink-2);font-weight:600}
+  .foot-inner a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+  .foot-inner a:hover{color:var(--blue);border-color:var(--blue)}
+  @media(max-width:734px){
+    .grid{grid-template-columns:1fr}
+    .strip-inner{grid-template-columns:1fr;gap:18px}
+    .trend-list{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="brand">AI Weekly&nbsp;·&nbsp;本周AI实时新闻</span>
+    <span class="date">2026.6.8 – 6.11</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">AI WEEKLY BRIEFING</div>
+  <h1>本周 AI，<br>大事正在发生。</h1>
+  <p>WWDC 落幕、巨头排队 IPO、Agent 走向终端。十五条本周要闻，一页看尽。</p>
+  <div class="meta">整理于 2026 年 6 月 11 日&nbsp;&nbsp;·&nbsp;&nbsp;来源：谷歌 / 知乎 / 新浪 / 证券时报 等公开渠道&nbsp;&nbsp;·&nbsp;&nbsp;点击各条"来源"可跳转原文</div>
+</header>
+
+<section class="strip">
+  <div class="strip-inner">
+    <div><b>$965B</b><span>Anthropic IPO 申报估值</span></div>
+    <div><b>2 家</b><span>AI 巨头本月递交 S-1</span></div>
+    <div><b>41%</b><span>HF 大模型下载量来自中国模型</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="kicker">Global</div>
+    <h2>国际动态</h2>
+    <p>苹果把 AI 装进 iPhone，OpenAI 与 Anthropic 先后叩响资本市场大门。</p>
+  </div>
+  <div class="grid">
+
+    <div class="card feature">
+      <div class="tagline"><span class="pill">事项 · 苹果 WWDC 2026</span><span class="time">时间 · 6月9日</span></div>
+      <h3>Siri 接入 Gemini，Claude 首次登陆 iPhone。</h3>
+      <p class="body">Siri 全面升级为由谷歌 Gemini 驱动的「Siri AI」；全新多 AI Extensions 系统让 Claude 首次成为 iPhone 可选 AI；iOS 27 Beta 1 当天发布。这也是库克最后一次以 CEO 身份主持 WWDC，9 月 1 日起由 John Ternus 接任。</p>
+      <div class="src"><a href="https://techcrunch.com/2026/06/09/wwdc-2026-everything-announced-on-siri-ai-os-27-apple-intelligence-and-more/" target="_blank" rel="noopener">来源 · TechCrunch《WWDC 2026: Everything announced》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 新模型发布</span><span class="time">时间 · 6月9日</span></div>
+      <h3>Anthropic 发布 Claude Fable 5 / Mythos 5</h3>
+      <p class="body">全新 Mythos 级模型层级，SWE-bench Verified 达 95%、Pro 达 80%，定价 $10/$50 每百万 Token。</p>
+      <div class="src"><a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">来源 · Anthropic 官网</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · IPO</span><span class="time">时间 · 6月10日</span></div>
+      <h3>OpenAI 秘密递交 S-1</h3>
+      <p class="body">向美国 SEC 秘密提交 IPO 注册草案，紧随 Anthropic（6月1日递交，估值约 9650 亿美元、年化营收约 470 亿美元）之后。</p>
+      <div class="src"><a href="https://openai.com/news/" target="_blank" rel="noopener">来源 · OpenAI News</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 云合作</span><span class="time">时间 · 6月11日</span></div>
+      <h3>OpenAI 携手 Oracle 云</h3>
+      <p class="body">通过 Oracle 云承诺协议开放 OpenAI 模型与 Codex 访问，继续深耕企业级市场。</p>
+      <div class="src"><a href="https://openai.com/news/" target="_blank" rel="noopener">来源 · OpenAI News</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 安全模型</span><span class="time">时间 · 本周</span></div>
+      <h3>GPT-5.5-Cyber 向欧盟开放</h3>
+      <p class="body">网络安全专用模型向欧盟机构、政府及经审核的安全团队限量预览，覆盖 EU AI Office 等机构。</p>
+      <div class="src"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-8-2026" target="_blank" rel="noopener">来源 · Build Fast with AI《AI News June 8》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 安全警告</span><span class="time">时间 · 本周</span></div>
+      <h3>Anthropic 呼吁装上「刹车踏板」</h3>
+      <p class="body">罕见公开警告：AI 或将很快具备脱离人类监督的自我改进能力，呼吁全行业建立可减速、可叫停的技术保障机制。</p>
+      <div class="src"><a href="https://www.marketingprofs.com/opinions/2026/54909/ai-update-june-5-2026-ai-news-and-views-from-the-past-week" target="_blank" rel="noopener">来源 · MarketingProfs《AI Update, June 5》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 编程模型竞争</span><span class="time">时间 · 6月1日起持续发酵</span></div>
+      <h3>微软、谷歌进军 AI 编程</h3>
+      <p class="body">依托云基础设施与资金优势，正面挑战 Claude Code 与 Codex 在 AI 编程市场的领先地位。</p>
+      <div class="src"><a href="https://www.cnbc.com/2026/06/01/microsoft-and-google-take-on-anthropic-and-openai-in-ai-coding-models.html" target="_blank" rel="noopener">来源 · CNBC</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="kicker">China</div>
+    <h2>国内动态</h2>
+    <p>智谱冲刺科创板，Kimi 估值破百亿美元，国产开源模型下载量破百亿次。</p>
+  </div>
+  <div class="grid">
+
+    <div class="card feature">
+      <div class="tagline"><span class="pill">事项 · 资本市场</span><span class="time">时间 · 本周</span></div>
+      <h3>智谱AI 拟登陆科创板。</h3>
+      <p class="body">智谱在港交所公告，董事会决议拟向监管机构申请发行 A 股，并申请在上交所科创板上市交易，国产大模型第一梯队迈出资本化关键一步。</p>
+      <div class="src"><a href="https://zhuanlan.zhihu.com/p/2045792864064558978" target="_blank" rel="noopener">来源 · 知乎《AI 早报 2026-06-04》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · Agent 产品</span><span class="time">时间 · 本周</span></div>
+      <h3>Kimi 发布本地 Agent「Kimi Work」</h3>
+      <p class="body">Beta 版内核基于 Kimi Code，最高支持 300 个子 Agent 并行协作，Mac 版已开放下载，Windows 版即将上线。</p>
+      <div class="src"><a href="https://zhuanlan.zhihu.com/p/2045792864064558978" target="_blank" rel="noopener">来源 · 知乎《AI 早报 2026-06-04》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 融资估值</span><span class="time">时间 · 近日</span></div>
+      <h3>Kimi 估值突破 100 亿美元</h3>
+      <p class="body">阿里、腾讯加码投资，月之暗面估值突破百亿美元大关。</p>
+      <div class="src"><a href="https://www.stcn.com/article/detail/3645003.html" target="_blank" rel="noopener">来源 · 证券时报《阿里腾讯加码！Kimi估值突破100亿美元》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 新模型发布</span><span class="time">时间 · 本周</span></div>
+      <h3>阿里发布 Qwen3.7-Plus</h3>
+      <p class="body">多模态智能体模型，在 Qwen3.7 文本与 Agent 能力基础上全面升级视觉-语言能力，打造一体化智能体基座。</p>
+      <div class="src"><a href="https://zhuanlan.zhihu.com/p/2045078283709149281" target="_blank" rel="noopener">来源 · 知乎《AI 早报 2026-06-02》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 模型更新</span><span class="time">时间 · 本周（6月10日收录）</span></div>
+      <h3>小米 MiMo 推理模型上新</h3>
+      <p class="body">新增推理模型 MiMo-V2.5-Pro-UltraSpeed，主打高速推理。</p>
+      <div class="src"><a href="https://zhuanlan.zhihu.com/p/670574382" target="_blank" rel="noopener">来源 · 知乎《国内外知名大模型及应用 2026/06/10》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 模型更新</span><span class="time">时间 · 6月</span></div>
+      <h3>DeepSeek 推出 V3.1-Terminus</h3>
+      <p class="body">发布通用模型 DeepSeek-V3.1-Terminus 与推理版 V3.1-Terminus-Thinking。</p>
+      <div class="src"><a href="https://zhuanlan.zhihu.com/p/670574382" target="_blank" rel="noopener">来源 · 知乎《国内外知名大模型及应用 2026/06/10》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 商业化</span><span class="time">时间 · 本周</span></div>
+      <h3>MiniMax M3 上线并调整计费</h3>
+      <p class="body">M3 模型上线，Token Plan 切换为 Token-Based 计费，并为老用户推出权益补偿。</p>
+      <div class="src"><a href="https://zhuanlan.zhihu.com/p/2045078283709149281" target="_blank" rel="noopener">来源 · 知乎《AI 早报 2026-06-02》</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 开源生态</span><span class="time">时间 · 近日</span></div>
+      <h3>国产开源模型下载量破百亿次</h3>
+      <p class="body">Hugging Face 2026 春季报告：过去一年平台 41% 的大模型下载量来自中国研发的模型。</p>
+      <div class="src"><a href="https://www.sina.cn/news/detail/5292418653750976.html" target="_blank" rel="noopener">来源 · 新浪新闻《国产开源大模型下载量破百亿次》</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="trends">
+  <div class="trends-inner">
+    <div class="section-head" style="margin-bottom:0">
+      <div class="kicker">Takeaways</div>
+      <h2>三条主线，看懂本周。</h2>
+    </div>
+    <div class="trend-list">
+      <div class="trend">
+        <span class="num">01</span>
+        <h4>资本化提速</h4>
+        <p>OpenAI、Anthropic 相继递交 S-1，智谱冲刺科创板，Kimi 估值破百亿美元。</p>
+      </div>
+      <div class="trend">
+        <span class="num">02</span>
+        <h4>Agent 全面落地</h4>
+        <p>Kimi Work、Qwen3.7-Plus、Claude 入驻 iPhone——智能体从云端走向终端。</p>
+      </div>
+      <div class="trend">
+        <span class="num">03</span>
+        <h4>安全议题升温</h4>
+        <p>Anthropic 公开呼吁为自我改进型 AI 装上「刹车踏板」。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <b>本周AI实时新闻</b>（2026年6月8日–6月11日）· 信息整理自
+    <a href="https://techcrunch.com/2026/06/09/wwdc-2026-everything-announced-on-siri-ai-os-27-apple-intelligence-and-more/" target="_blank" rel="noopener">TechCrunch</a>、
+    <a href="https://www.engadget.com/2189698/everything-announced-at-apples-wwdc-2026-keynote/" target="_blank" rel="noopener">Engadget</a>、
+    <a href="https://www.cnbc.com/2026/06/01/microsoft-and-google-take-on-anthropic-and-openai-in-ai-coding-models.html" target="_blank" rel="noopener">CNBC</a>、
+    <a href="https://llm-stats.com/ai-news" target="_blank" rel="noopener">llm-stats</a>、
+    <a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-8-2026" target="_blank" rel="noopener">Build Fast with AI</a>、
+    <a href="https://zhuanlan.zhihu.com/p/670574382" target="_blank" rel="noopener">知乎</a>、
+    <a href="https://www.stcn.com/article/detail/3645003.html" target="_blank" rel="noopener">证券时报</a>、
+    <a href="https://www.sina.cn/news/detail/5292418653750976.html" target="_blank" rel="noopener">新浪新闻</a>
+    等公开渠道，仅供参考。<br>
+    结构：事项 – 时间 – 具体内容 – 来源渠道 · 整理日期 2026.6.11
+  </div>
+</footer>
+
+</body>
+</html>
