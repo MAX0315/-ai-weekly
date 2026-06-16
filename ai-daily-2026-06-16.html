@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日AI资讯 · 2026.6.16</title>
+<style>
+  :root{
+    --ink:#1d1d1f; --ink-2:#6e6e73; --ink-3:#86868b;
+    --bg:#ffffff; --bg-soft:#f5f5f7; --line:rgba(0,0,0,.08);
+    --blue:#0071e3; --radius:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+    color:var(--ink);background:var(--bg);
+    -webkit-font-smoothing:antialiased;line-height:1.6;
+  }
+  .nav{
+    position:sticky;top:0;z-index:99;
+    backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+    background:rgba(255,255,255,.72);border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:980px;margin:0 auto;padding:0 22px;height:48px;display:flex;align-items:center;justify-content:space-between}
+  .nav .brand{font-size:14px;font-weight:600;letter-spacing:.2px}
+  .nav .links{display:flex;gap:22px}
+  .nav .links a{font-size:13px;color:var(--ink-2);text-decoration:none;transition:color .25s}
+  .nav .links a:hover{color:var(--blue)}
+  .nav .date{font-size:12px;color:var(--ink-3)}
+  .hero{
+    background:#000;color:#f5f5f7;text-align:center;
+    padding:110px 22px 120px;overflow:hidden;position:relative;
+  }
+  .hero::after{
+    content:"";position:absolute;left:50%;bottom:-340px;transform:translateX(-50%);
+    width:900px;height:520px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(0,113,227,.45),rgba(0,113,227,0));
+    filter:blur(10px);pointer-events:none;
+  }
+  .hero .eyebrow{font-size:14px;font-weight:600;color:#86868b;letter-spacing:.18em;text-transform:uppercase}
+  .hero h1{
+    margin:18px auto 14px;max-width:760px;
+    font-size:clamp(40px,7vw,72px);font-weight:700;letter-spacing:-.02em;line-height:1.08;
+    background:linear-gradient(180deg,#fff 55%,#a9b6c9);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{font-size:clamp(17px,2.4vw,22px);color:#a1a1a6;max-width:660px;margin:0 auto}
+  .hero .meta{margin-top:30px;font-size:13px;color:#6e6e73;letter-spacing:.04em}
+  .strip{background:var(--bg-soft);}
+  .strip-inner{max-width:980px;margin:0 auto;padding:54px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center}
+  .strip b{display:block;font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.02em}
+  .strip span{font-size:14px;color:var(--ink-2)}
+  .section{max-width:980px;margin:0 auto;padding:88px 22px 10px}
+  .section-head{margin-bottom:40px}
+  .section-head .kicker{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:.12em;text-transform:uppercase}
+  .section-head h2{font-size:clamp(28px,4.6vw,44px);font-weight:700;letter-spacing:-.02em;margin-top:8px}
+  .section-head p{color:var(--ink-2);margin-top:8px;font-size:17px;max-width:620px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{
+    background:var(--bg-soft);border-radius:var(--radius);padding:30px 30px 26px;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(0,0,0,.10)}
+  .card.feature{grid-column:1/-1;background:#000;color:#f5f5f7}
+  .card.feature .body{color:#a1a1a6}
+  .tagline{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .pill{
+    font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--blue);
+    background:rgba(0,113,227,.10);padding:4px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .card.feature .pill{background:rgba(10,132,255,.18);color:#6cb0ff}
+  .time{font-size:12px;color:var(--ink-3)}
+  .card.feature .time{color:#86868b}
+  .card h3{font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin-bottom:10px}
+  .card.feature h3{font-size:clamp(24px,3.4vw,32px)}
+  .body{font-size:15px;color:var(--ink-2)}
+  .src{
+    margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:12px;display:flex;align-items:center;
+  }
+  .src a{
+    color:var(--ink-3);text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+    transition:color .25s;
+  }
+  .src a::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.55}
+  .src a::after{content:"↗";font-size:12px;opacity:.55;transition:transform .25s,opacity .25s}
+  .src a:hover{color:var(--blue)}
+  .src a:hover::after{transform:translate(2px,-2px);opacity:1}
+  .card.feature .src{border-color:rgba(255,255,255,.14)}
+  .card.feature .src a{color:#6e6e73}
+  .card.feature .src a:hover{color:#6cb0ff}
+  .trends{background:#000;color:#f5f5f7;margin-top:96px}
+  .trends-inner{max-width:980px;margin:0 auto;padding:96px 22px}
+  .trends .kicker{color:#6cb0ff}
+  .trends h2{color:#f5f5f7}
+  .trend-list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .trend{background:#161617;border-radius:var(--radius);padding:30px}
+  .trend .num{
+    font-size:13px;font-weight:700;color:#6cb0ff;letter-spacing:.1em;margin-bottom:14px;display:block;
+  }
+  .trend h4{font-size:19px;font-weight:700;margin-bottom:8px}
+  .trend p{font-size:14px;color:#a1a1a6}
+  footer{background:var(--bg-soft)}
+  .foot-inner{max-width:980px;margin:0 auto;padding:34px 22px;font-size:12px;color:var(--ink-3);line-height:1.8}
+  .foot-inner b{color:var(--ink-2);font-weight:600}
+  .foot-inner a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+  .foot-inner a:hover{color:var(--blue);border-color:var(--blue)}
+  @media(max-width:734px){
+    .grid{grid-template-columns:1fr}
+    .strip-inner{grid-template-columns:1fr;gap:18px}
+    .trend-list{grid-template-columns:1fr}
+    .nav .links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="brand">AI Daily&nbsp;·&nbsp;每日AI资讯</span>
+    <div class="links">
+      <a href="#global">国际AI资讯</a>
+      <a href="#china">国内AI资讯</a>
+    </div>
+    <span class="date">2026.6.16 · 星期二</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">AI DAILY BRIEFING</div>
+  <h1>今日 AI，<br>计费换挡。</h1>
+  <p>Anthropic 把编程调用拆成独立额度、退役两款 Claude 4；OpenAI 砸 1.5 亿美元建伙伴网络，国内 DeepSeek V4 与 Kimi K2.6 同周开源万亿参数。国际、国内两块，一页看尽。</p>
+  <div class="meta">整理于 2026 年 6 月 16 日&nbsp;&nbsp;·&nbsp;&nbsp;来源：Anthropic / OpenAI / 36氪 / 证券时报 / Caixin Global 等公开渠道&nbsp;&nbsp;·&nbsp;&nbsp;点击各条“来源”可跳转原文</div>
+</header>
+
+<section class="strip">
+  <div class="strip-inner">
+    <div><b>$1.5亿</b><span>OpenAI Partner Network 投入</span></div>
+    <div><b>200万 token</b><span>Gemini 3.5 Pro 超长上下文</span></div>
+    <div><b>万亿参数</b><span>DeepSeek V4 与 Kimi K2.6 同周开源</span></div>
+  </div>
+</section>
+
+<section class="section" id="global">
+  <div class="section-head">
+    <div class="kicker">Global · 国际</div>
+    <h2>国际 AI 资讯</h2>
+    <p>计费规则调整与下一代模型节奏成为主线，Anthropic 重塑编程调用成本，OpenAI、Google 持续推进企业交付。</p>
+  </div>
+  <div class="grid">
+
+    <div class="card feature">
+      <div class="tagline"><span class="pill">事项 · 计费调整</span><span class="time">时间 · 6月15日</span></div>
+      <h3>Anthropic 把编程调用拆成独立额度：开发者成本重新计价。</h3>
+      <p class="body">自 6 月 15 日起，付费 Claude 计划中通过 Claude Agent SDK、claude -p、Claude Code GitHub Actions 以及第三方 Agent 产生的程序化用量，从订阅额度中拆出，转入单独的月度额度（Pro 20 美元、Max 5x 100 美元、Max 20x 200 美元），按完整 API 价格计量且不滚存。Claude.ai 网页对话与终端交互式会话不受影响。重度依赖自动化编程的团队需重新评估月度成本结构。</p>
+      <div class="src"><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">来源 · Anthropic 官方</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 模型退役</span><span class="time">时间 · 6月15日</span></div>
+      <h3>两款 Claude 4 模型从 API 退役</h3>
+      <p class="body">claude-sonnet-4-20250514 与 claude-opus-4-20250514 自 6 月 15 日从 Claude API 退役，此后对这两个模型的调用将返回错误。依赖旧模型 ID 的应用需尽快迁移到更新版本，避免线上服务中断。</p>
+      <div class="src"><a href="https://docs.anthropic.com/en/docs/about-claude/model-deprecations" target="_blank" rel="noopener">来源 · Anthropic 模型退役文档</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 企业生态</span><span class="time">时间 · 6月14日</span></div>
+      <h3>OpenAI 推出 Partner Network，投入 1.5 亿美元</h3>
+      <p class="body">OpenAI 宣布推出 OpenAI Partner Network，投入约 1.5 亿美元资金，帮助全球合作伙伴加速企业 AI 的采用、部署与转型，覆盖咨询、系统集成与行业方案商，意在把模型能力更快转化为可交付的企业成果。</p>
+      <div class="src"><a href="https://openai.com/index/introducing-openai-partner-network/" target="_blank" rel="noopener">来源 · OpenAI 官方</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 模型前瞻</span><span class="time">时间 · 6月13日</span></div>
+      <h3>Gemini 3.5 Pro 仍处有限预览，GA 预计本月内</h3>
+      <p class="body">截至 6 月中旬，Gemini 3.5 Pro 仍处于 Vertex 有限预览与内部测试阶段，尚未正式 GA。该模型主打 200 万 token 超长上下文、“Deep Think” 深度推理模式与前沿多模态理解，将承接此前 Ultra 层处理的最难推理与长上下文任务，正式发布预计集中在 6 月下旬。</p>
+      <div class="src"><a href="https://www.techtimes.com/articles/317919/20260606/google-gemini-35-pro-nears-june-launch-2-million-token-context-deep-think-reasoning.htm" target="_blank" rel="noopener">来源 · TechTimes</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 企业平台</span><span class="time">时间 · 6月9日</span></div>
+      <h3>微软联合 KPMG 全球规模化部署 AI 智能体</h3>
+      <p class="body">微软与 KPMG 深化合作，KPMG 通过 Microsoft Agent 365 在全球范围治理、部署与扩展可信企业级 AI 智能体，并在内部约 27.6 万名员工中规模化使用 Microsoft 365 Copilot，把智能体纳入审计、税务与咨询等业务流程。</p>
+      <div class="src"><a href="https://news.microsoft.com/source/2026/06/09/kpmg-and-microsoft-scale-trusted-enterprise-ai-agents-globally-through-deployment-of-agent-365-and-copilot/" target="_blank" rel="noopener">来源 · Microsoft Source</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="china">
+  <div class="section-head">
+    <div class="kicker">China · 国内</div>
+    <h2>国内 AI 资讯</h2>
+    <p>开源大模型与场景落地双线推进，DeepSeek、Kimi、智谱聚焦底层模型能力，巨头争夺高频应用入口。</p>
+  </div>
+  <div class="grid">
+
+    <div class="card feature">
+      <div class="tagline"><span class="pill">事项 · 开源大模型</span><span class="time">时间 · 近日</span></div>
+      <h3>DeepSeek V4 与 Kimi K2.6 同周发布万亿参数开源模型。</h3>
+      <p class="body">近期 Kimi K2.6 与 DeepSeek V4 两款万亿参数开源大模型在同一周内发布，目前均跻身 OpenRouter 全球调用量前列。DeepSeek 同步更新网页与 App 版本，支持最高 100 万 token 上下文，进一步缩小与海外旗舰模型的差距。国产开源路线在能力与生态上持续逼近第一梯队。</p>
+      <div class="src"><a href="https://36kr.com/p/3784369980660996" target="_blank" rel="noopener">来源 · 36氪 / OpenRouter</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 基础模型</span><span class="time">时间 · 6月10日</span></div>
+      <h3>智谱预告 GLM-5，宣布全面回归基础模型研究</h3>
+      <p class="body">智谱首席科学家、清华大学计算机系教授唐杰表示新一代基础模型 GLM-5「即将到来」，并宣布 2026 年起公司将「全面回归基础大模型研究」。此前智谱已于年初登陆港交所，模型 API 业务保持高速增长，国内厂商竞争从应用层回到底层模型能力。</p>
+      <div class="src"><a href="https://www.stcn.com/article/detail/3640328.html" target="_blank" rel="noopener">来源 · 证券时报</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 场景落地</span><span class="time">时间 · 6月11日</span></div>
+      <h3>科技巨头把高考志愿填报变成 AI 新战场</h3>
+      <p class="body">高考结束后，国内多家科技巨头围绕志愿填报推出 AI Agent 与智能咨询服务，借助大模型整合院校、专业与分数数据，为考生与家长提供个性化建议，竞争从入口流量延伸到具体的 AI 应用体验，凸显 AI 在中文消费级场景的快速渗透。</p>
+      <div class="src"><a href="https://www.caixinglobal.com/2026-06-11/chinese-tech-giants-turn-college-admissions-into-latest-ai-battleground-102452924.html" target="_blank" rel="noopener">来源 · Caixin Global</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 产业观察</span><span class="time">时间 · 6月</span></div>
+      <h3>国产基础大模型密集上新，竞争回到底层能力</h3>
+      <p class="body">阿里、腾讯、字节、百度围绕模型生态持续竞争，开源与商用双线并进。随着 DeepSeek、Kimi、智谱等接连聚焦基础模型研发，国内 AI 竞争重心正从应用层重新回到底层大模型能力与性价比。</p>
+      <div class="src"><a href="https://m.thepaper.cn/newsDetail_forward_32551419" target="_blank" rel="noopener">来源 · 澎湃新闻</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="trends">
+  <div class="trends-inner">
+    <div class="section-head" style="margin-bottom:0">
+      <div class="kicker">Takeaways</div>
+      <h2>三条主线，看懂今天。</h2>
+    </div>
+    <div class="trend-list">
+      <div class="trend">
+        <span class="num">01</span>
+        <h4>编程调用进入计价时代</h4>
+        <p>Anthropic 把 Agent / Claude Code 用量拆成独立额度，自动化编程的成本结构被重新定价。</p>
+      </div>
+      <div class="trend">
+        <span class="num">02</span>
+        <h4>下一代模型蓄势待发</h4>
+        <p>Gemini 3.5 Pro 临门一脚、Claude 4 旧版退役，海外旗舰模型迭代节奏明显加快。</p>
+      </div>
+      <div class="trend">
+        <span class="num">03</span>
+        <h4>国产开源逼近第一梯队</h4>
+        <p>DeepSeek V4、Kimi K2.6 万亿参数同周开源，智谱回归基础研究——竞争回到底层能力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <b>每日AI资讯</b>（2026年6月16日 · 星期二）· 信息整理自
+    <a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic</a>、
+    <a href="https://openai.com/index/introducing-openai-partner-network/" target="_blank" rel="noopener">OpenAI</a>、
+    <a href="https://www.techtimes.com/articles/317919/20260606/google-gemini-35-pro-nears-june-launch-2-million-token-context-deep-think-reasoning.htm" target="_blank" rel="noopener">TechTimes</a>、
+    <a href="https://36kr.com/p/3784369980660996" target="_blank" rel="noopener">36氪</a>、
+    <a href="https://www.stcn.com/article/detail/3640328.html" target="_blank" rel="noopener">证券时报</a>、
+    <a href="https://www.caixinglobal.com/2026-06-11/chinese-tech-giants-turn-college-admissions-into-latest-ai-battleground-102452924.html" target="_blank" rel="noopener">Caixin Global</a>
+    等公开渠道，仅供参考。<br>
+    结构：国际AI资讯 / 国内AI资讯 两大板块 · 事项 – 时间 – 具体内容 – 来源渠道 · 整理日期 2026.6.16
+  </div>
+</footer>
+
+</body>
+</html>
