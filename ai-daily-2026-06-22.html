@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日AI资讯 · 2026.6.22</title>
+<style>
+  :root{
+    --ink:#1d1d1f; --ink-2:#6e6e73; --ink-3:#86868b;
+    --bg:#ffffff; --bg-soft:#f5f5f7; --line:rgba(0,0,0,.08);
+    --blue:#0071e3; --radius:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+    color:var(--ink);background:var(--bg);
+    -webkit-font-smoothing:antialiased;line-height:1.6;
+  }
+  .nav{
+    position:sticky;top:0;z-index:99;
+    backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+    background:rgba(255,255,255,.72);border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:980px;margin:0 auto;padding:0 22px;height:48px;display:flex;align-items:center;justify-content:space-between}
+  .nav .brand{font-size:14px;font-weight:600;letter-spacing:.2px}
+  .nav .links{display:flex;gap:22px}
+  .nav .links a{font-size:13px;color:var(--ink-2);text-decoration:none;transition:color .25s}
+  .nav .links a:hover{color:var(--blue)}
+  .nav .date{font-size:12px;color:var(--ink-3)}
+  .hero{
+    background:#000;color:#f5f5f7;text-align:center;
+    padding:110px 22px 120px;overflow:hidden;position:relative;
+  }
+  .hero::after{
+    content:"";position:absolute;left:50%;bottom:-340px;transform:translateX(-50%);
+    width:900px;height:520px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(0,113,227,.45),rgba(0,113,227,0));
+    filter:blur(10px);pointer-events:none;
+  }
+  .hero .eyebrow{font-size:14px;font-weight:600;color:#86868b;letter-spacing:.18em;text-transform:uppercase}
+  .hero h1{
+    margin:18px auto 14px;max-width:760px;
+    font-size:clamp(40px,7vw,72px);font-weight:700;letter-spacing:-.02em;line-height:1.08;
+    background:linear-gradient(180deg,#fff 55%,#a9b6c9);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{font-size:clamp(17px,2.4vw,22px);color:#a1a1a6;max-width:660px;margin:0 auto}
+  .hero .meta{margin-top:30px;font-size:13px;color:#6e6e73;letter-spacing:.04em}
+  .strip{background:var(--bg-soft);}
+  .strip-inner{max-width:980px;margin:0 auto;padding:54px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center}
+  .strip b{display:block;font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.02em}
+  .strip span{font-size:14px;color:var(--ink-2)}
+  .section{max-width:980px;margin:0 auto;padding:88px 22px 10px}
+  .section-head{margin-bottom:40px}
+  .section-head .kicker{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:.12em;text-transform:uppercase}
+  .section-head h2{font-size:clamp(28px,4.6vw,44px);font-weight:700;letter-spacing:-.02em;margin-top:8px}
+  .section-head p{color:var(--ink-2);margin-top:8px;font-size:17px;max-width:620px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{
+    background:var(--bg-soft);border-radius:var(--radius);padding:30px 30px 26px;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(0,0,0,.10)}
+  .card.feature{grid-column:1/-1;background:#000;color:#f5f5f7}
+  .card.feature .body{color:#a1a1a6}
+  .tagline{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .pill{
+    font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--blue);
+    background:rgba(0,113,227,.10);padding:4px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .card.feature .pill{background:rgba(10,132,255,.18);color:#6cb0ff}
+  .time{font-size:12px;color:var(--ink-3);font-weight:600}
+  .card.feature .time{color:#86868b}
+  .card h3{font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin-bottom:10px}
+  .card.feature h3{font-size:clamp(24px,3.4vw,32px)}
+  .body{font-size:15px;color:var(--ink-2)}
+  .src{
+    margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:12px;display:flex;align-items:center;
+  }
+  .src a{
+    color:var(--ink-3);text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+    transition:color .25s;
+  }
+  .src a::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.55}
+  .src a::after{content:"↗";font-size:12px;opacity:.55;transition:transform .25s,opacity .25s}
+  .src a:hover{color:var(--blue)}
+  .src a:hover::after{transform:translate(2px,-2px);opacity:1}
+  .card.feature .src{border-color:rgba(255,255,255,.14)}
+  .card.feature .src a{color:#6e6e73}
+  .card.feature .src a:hover{color:#6cb0ff}
+  .trends{background:#000;color:#f5f5f7;margin-top:96px}
+  .trends-inner{max-width:980px;margin:0 auto;padding:96px 22px}
+  .trends .kicker{color:#6cb0ff}
+  .trends h2{color:#f5f5f7}
+  .trend-list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .trend{background:#161617;border-radius:var(--radius);padding:30px}
+  .trend .num{
+    font-size:13px;font-weight:700;color:#6cb0ff;letter-spacing:.1em;margin-bottom:14px;display:block;
+  }
+  .trend h4{font-size:19px;font-weight:700;margin-bottom:8px}
+  .trend p{font-size:14px;color:#a1a1a6}
+  footer{background:var(--bg-soft)}
+  .foot-inner{max-width:980px;margin:0 auto;padding:34px 22px;font-size:12px;color:var(--ink-3);line-height:1.8}
+  .foot-inner b{color:var(--ink-2);font-weight:600}
+  .foot-inner a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+  .foot-inner a:hover{color:var(--blue);border-color:var(--blue)}
+  @media(max-width:734px){
+    .grid{grid-template-columns:1fr}
+    .strip-inner{grid-template-columns:1fr;gap:18px}
+    .trend-list{grid-template-columns:1fr}
+    .nav .links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="brand">AI Daily&nbsp;·&nbsp;每日AI资讯</span>
+    <div class="links">
+      <a href="#global">国际AI资讯</a>
+      <a href="#china">国内AI资讯</a>
+    </div>
+    <span class="date">2026.6.22 · 星期一</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">AI DAILY BRIEFING</div>
+  <h1>今日 AI，<br>奇点山麓。</h1>
+  <p>6月22日：哈萨比斯在斯坦福称 AGI 三到五年内到来，定义当下为"奇点的山麓"；月之暗面开源 Kimi K2.7 Code，中美开源旗舰同台竞速。国际、国内两块，逐条标到日。</p>
+  <div class="meta">整理于 2026 年 6 月 22 日&nbsp;&nbsp;·&nbsp;&nbsp;来源：新浪科技 / unrot.co / buildfastwithai.com / CNN / AITNT 等公开渠道&nbsp;&nbsp;·&nbsp;&nbsp;点击各条"来源"可跳转原文</div>
+</header>
+
+<section class="strip">
+  <div class="strip-inner">
+    <div><b>3–5年</b><span>6月22日 · 哈萨比斯预测 AGI 到来时间</span></div>
+    <div><b>46.4%</b><span>5月末 · ChatGPT 全球 AI 助手份额首破五成</span></div>
+    <div><b>1.1万亿</b><span>6月22日 · Kimi K2.7 Code 参数规模</span></div>
+  </div>
+</section>
+
+<section class="section" id="global">
+  <div class="section-head">
+    <div class="kicker">Global · 国际</div>
+    <h2>国际 AI 资讯</h2>
+    <p>聚焦 6 月 18–22 日动态：AGI 时间表收紧、市场格局生变、人才与能源基建持续承压。</p>
+  </div>
+  <div class="grid">
+
+    <div class="card feature">
+      <div class="tagline"><span class="pill">事项 · AGI 预测</span><span class="time">2026年6月22日</span></div>
+      <h3>哈萨比斯：AGI 三到五年内到来，误差不超过一年。</h3>
+      <p class="body">DeepMind 创始人哈萨比斯在斯坦福演讲中称，通用人工智能（AGI）将在三到五年内到来、误差不超过一年，并把当下定义为"奇点的山麓"——人类正站在指数级跃迁的起点。</p>
+      <div class="src"><a href="https://tech.sina.com.cn/" target="_blank" rel="noopener">来源 · 新浪科技</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 市场格局</span><span class="time">2026年5月末 / 6月18日</span></div>
+      <h3>ChatGPT 全球 AI 助手份额降至 46.4%</h3>
+      <p class="body">最新数据显示，ChatGPT 在全球 AI 助手中的份额降至 46.4%，三年半来首次跌破五成。按浏览量口径，ChatGPT 占 54.7%、Gemini 27.4%、Claude 全球 8.2%（美国 12.5%）、DeepSeek 4.1%、Grok 2.8%。</p>
+      <div class="src"><a href="https://unrot.co/" target="_blank" rel="noopener">来源 · unrot.co</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 人才流动</span><span class="time">2026年6月18日</span></div>
+      <h3>Noam Shazeer 离开谷歌，加盟 OpenAI</h3>
+      <p class="body">Transformer 论文作者之一 Noam Shazeer 离开谷歌加盟 OpenAI，出任架构研究负责人。顶尖研究者在头部实验室之间的流动持续升温，架构创新成为新一轮争夺焦点。</p>
+      <div class="src"><a href="https://buildfastwithai.com/" target="_blank" rel="noopener">来源 · buildfastwithai.com</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 能源基建</span><span class="time">2026年6月21日</span></div>
+      <h3>FERC 向六大电网运营商发整改令</h3>
+      <p class="body">美国联邦能源管理委员会（FERC）向六大电网运营商发出整改令，要求加速 AI 数据中心的电网接入审批。算力扩张正把压力直接传导到电力基础设施层面。</p>
+      <div class="src"><a href="https://buildfastwithai.com/" target="_blank" rel="noopener">来源 · buildfastwithai.com</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 监管余波</span><span class="time">2026年6月21日</span></div>
+      <h3>Fable 5 / Mythos 5 出口管制下线满 10 天</h3>
+      <p class="body">Fable 5 / Mythos 5 在出口管制下下线已满 10 天，Anthropic 称相关指控"不成比例"，多名研究者联署要求公开、透明的审查流程。监管与前沿模型的博弈仍在延续。</p>
+      <div class="src"><a href="https://www.cnn.com/" target="_blank" rel="noopener">来源 · CNN</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 花边</span><span class="time">2026年6月22日</span></div>
+      <h3>世界杯 AI 预测集体翻车：比利时 0:0 平伊朗</h3>
+      <p class="body">世界杯赛场上比利时 0:0 被伊朗逼平，而赛前多家 AI 模型集体看好比利时，预测集体翻车。又一次提醒：在高度不确定的真实世界博弈面前，模型并非万能。</p>
+      <div class="src"><a href="https://finance.sina.com.cn/" target="_blank" rel="noopener">来源 · 新浪财经</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="china">
+  <div class="section-head">
+    <div class="kicker">China · 国内</div>
+    <h2>国内 AI 资讯</h2>
+    <p>开源旗舰密集落地：月之暗面 Kimi K2.7 Code、智谱 GLM-5.2、MiniMax M3 同台竞速。</p>
+  </div>
+  <div class="grid">
+
+    <div class="card feature">
+      <div class="tagline"><span class="pill">事项 · 编程模型</span><span class="time">2026年6月22日</span></div>
+      <h3>月之暗面开源 Kimi K2.7 Code：约 1.1 万亿参数。</h3>
+      <p class="body">月之暗面开源 Kimi K2.7 Code，参数规模约 1.1 万亿、支持 256K 上下文，在长程任务上的 token 消耗较上代降低约 30%，进一步压低长链路编程与智能体任务的成本。</p>
+      <div class="src"><a href="https://www.aitnt.com/" target="_blank" rel="noopener">来源 · AITNT</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 开源旗舰</span><span class="time">2026年6月16日</span></div>
+      <h3>智谱 GLM-5.2 开源：编程能力直追 Claude Opus</h3>
+      <p class="body">智谱 GLM-5.2 开源，编程能力直追 Claude Opus 4.7–4.8，并在评测中跑赢 GPT-5.5 与 Gemini 3。国产开源旗舰在编程这一核心场景上持续逼近闭源第一梯队。</p>
+      <div class="src"><a href="https://unrot.co/" target="_blank" rel="noopener">来源 · unrot.co</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 开源生态</span><span class="time">2026年6月13日起</span></div>
+      <h3>MiniMax M3 成企业"不可召回"自托管选项</h3>
+      <p class="body">MiniMax M3 正成为企业可"不可召回"自托管的替代方案，与 Kimi K2.7 Code、Llama 4、GLM-5.2 一并进入企业评估清单。开源权重让企业在合规与自主可控上有了更多筹码。</p>
+      <div class="src"><a href="https://unrot.co/" target="_blank" rel="noopener">来源 · unrot.co</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 前沿研究</span><span class="time">CVPR 2026</span></div>
+      <h3>NeuroFlow：统一视觉编码与解码双向通路</h3>
+      <p class="body">上海 AI 实验室联合港大、港中文在 CVPR 2026 提出 NeuroFlow，统一视觉的编码与解码双向通路，在理解与生成之间建立可互通的表征，推动多模态架构走向一体化。</p>
+      <div class="src"><a href="https://www.aitnt.com/" target="_blank" rel="noopener">来源 · AITNT</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="trends">
+  <div class="trends-inner">
+    <div class="section-head" style="margin-bottom:0">
+      <div class="kicker">Takeaways</div>
+      <h2>三条主线，看懂今天。</h2>
+    </div>
+    <div class="trend-list">
+      <div class="trend">
+        <span class="num">01</span>
+        <h4>AGI 时间表收紧</h4>
+        <p>6月22日 · 哈萨比斯称 AGI 三到五年内到来，把当下定义为"奇点的山麓"。</p>
+      </div>
+      <div class="trend">
+        <span class="num">02</span>
+        <h4>中美开源格局生变</h4>
+        <p>6月 · Kimi K2.7 Code、GLM-5.2、MiniMax M3 密集开源，编程能力直追闭源旗舰。</p>
+      </div>
+      <div class="trend">
+        <span class="num">03</span>
+        <h4>监管与基建底层动荡</h4>
+        <p>6月21日 · Fable/Mythos 出口管制余波未平，FERC 整改令直指 AI 数据中心电力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <b>每日AI资讯</b>（2026年6月22日 · 星期一）· 信息整理自
+    <a href="https://tech.sina.com.cn/" target="_blank" rel="noopener">新浪科技</a>、
+    <a href="https://unrot.co/" target="_blank" rel="noopener">unrot.co</a>、
+    <a href="https://buildfastwithai.com/" target="_blank" rel="noopener">buildfastwithai.com</a>、
+    CNN、
+    <a href="https://www.aitnt.com/" target="_blank" rel="noopener">AITNT</a>
+    等公开渠道，仅供参考。每条均标注确切报道日期。<br>
+    结构：国际AI资讯 / 国内AI资讯 两大板块 · 事项 – 日期 – 具体内容 – 来源渠道 · 整理日期 2026.6.22
+  </div>
+</footer>
+
+</body>
+</html>
