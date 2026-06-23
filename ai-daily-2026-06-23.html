@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日AI资讯 · 2026.6.23</title>
+<style>
+  :root{
+    --ink:#1d1d1f; --ink-2:#6e6e73; --ink-3:#86868b;
+    --bg:#ffffff; --bg-soft:#f5f5f7; --line:rgba(0,0,0,.08);
+    --blue:#0071e3; --radius:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+    color:var(--ink);background:var(--bg);
+    -webkit-font-smoothing:antialiased;line-height:1.6;
+  }
+  .nav{
+    position:sticky;top:0;z-index:99;
+    backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+    background:rgba(255,255,255,.72);border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:980px;margin:0 auto;padding:0 22px;height:48px;display:flex;align-items:center;justify-content:space-between}
+  .nav .brand{font-size:14px;font-weight:600;letter-spacing:.2px}
+  .nav .links{display:flex;gap:22px}
+  .nav .links a{font-size:13px;color:var(--ink-2);text-decoration:none;transition:color .25s}
+  .nav .links a:hover{color:var(--blue)}
+  .nav .date{font-size:12px;color:var(--ink-3)}
+  .hero{
+    background:#000;color:#f5f5f7;text-align:center;
+    padding:110px 22px 120px;overflow:hidden;position:relative;
+  }
+  .hero::after{
+    content:"";position:absolute;left:50%;bottom:-340px;transform:translateX(-50%);
+    width:900px;height:520px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(0,113,227,.45),rgba(0,113,227,0));
+    filter:blur(10px);pointer-events:none;
+  }
+  .hero .eyebrow{font-size:14px;font-weight:600;color:#86868b;letter-spacing:.18em;text-transform:uppercase}
+  .hero h1{
+    margin:18px auto 14px;max-width:760px;
+    font-size:clamp(40px,7vw,72px);font-weight:700;letter-spacing:-.02em;line-height:1.08;
+    background:linear-gradient(180deg,#fff 55%,#a9b6c9);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{font-size:clamp(17px,2.4vw,22px);color:#a1a1a6;max-width:660px;margin:0 auto}
+  .hero .meta{margin-top:30px;font-size:13px;color:#6e6e73;letter-spacing:.04em}
+  .strip{background:var(--bg-soft);}
+  .strip-inner{max-width:980px;margin:0 auto;padding:54px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center}
+  .strip b{display:block;font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.02em}
+  .strip span{font-size:14px;color:var(--ink-2)}
+  .section{max-width:980px;margin:0 auto;padding:88px 22px 10px}
+  .section-head{margin-bottom:40px}
+  .section-head .kicker{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:.12em;text-transform:uppercase}
+  .section-head h2{font-size:clamp(28px,4.6vw,44px);font-weight:700;letter-spacing:-.02em;margin-top:8px}
+  .section-head p{color:var(--ink-2);margin-top:8px;font-size:17px;max-width:620px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{
+    background:var(--bg-soft);border-radius:var(--radius);padding:30px 30px 26px;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(0,0,0,.10)}
+  .card.feature{grid-column:1/-1;background:#000;color:#f5f5f7}
+  .card.feature .body{color:#a1a1a6}
+  .tagline{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .pill{
+    font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--blue);
+    background:rgba(0,113,227,.10);padding:4px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .card.feature .pill{background:rgba(10,132,255,.18);color:#6cb0ff}
+  .time{font-size:12px;color:var(--ink-3);font-weight:600}
+  .card.feature .time{color:#86868b}
+  .card h3{font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin-bottom:10px}
+  .card.feature h3{font-size:clamp(24px,3.4vw,32px)}
+  .body{font-size:15px;color:var(--ink-2)}
+  .src{
+    margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:12px;display:flex;align-items:center;
+  }
+  .src a{
+    color:var(--ink-3);text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+    transition:color .25s;
+  }
+  .src a::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.55}
+  .src a::after{content:"↗";font-size:12px;opacity:.55;transition:transform .25s,opacity .25s}
+  .src a:hover{color:var(--blue)}
+  .src a:hover::after{transform:translate(2px,-2px);opacity:1}
+  .card.feature .src{border-color:rgba(255,255,255,.14)}
+  .card.feature .src a{color:#6e6e73}
+  .card.feature .src a:hover{color:#6cb0ff}
+  .trends{background:#000;color:#f5f5f7;margin-top:96px}
+  .trends-inner{max-width:980px;margin:0 auto;padding:96px 22px}
+  .trends .kicker{color:#6cb0ff}
+  .trends h2{color:#f5f5f7}
+  .trend-list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .trend{background:#161617;border-radius:var(--radius);padding:30px}
+  .trend .num{
+    font-size:13px;font-weight:700;color:#6cb0ff;letter-spacing:.1em;margin-bottom:14px;display:block;
+  }
+  .trend h4{font-size:19px;font-weight:700;margin-bottom:8px}
+  .trend p{font-size:14px;color:#a1a1a6}
+  footer{background:var(--bg-soft)}
+  .foot-inner{max-width:980px;margin:0 auto;padding:34px 22px;font-size:12px;color:var(--ink-3);line-height:1.8}
+  .foot-inner b{color:var(--ink-2);font-weight:600}
+  .foot-inner a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+  .foot-inner a:hover{color:var(--blue);border-color:var(--blue)}
+  @media(max-width:734px){
+    .grid{grid-template-columns:1fr}
+    .strip-inner{grid-template-columns:1fr;gap:18px}
+    .trend-list{grid-template-columns:1fr}
+    .nav .links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="brand">AI Daily&nbsp;·&nbsp;每日AI资讯</span>
+    <div class="links">
+      <a href="#global">国际AI资讯</a>
+      <a href="#china">国内AI资讯</a>
+    </div>
+    <span class="date">2026.6.23 · 星期二</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">AI DAILY BRIEFING</div>
+  <h1>今日 AI，<br>旗舰竞速。</h1>
+  <p>6月23日：Gemini 3.5 Pro 发布窗口锁定本周，GPT-5.6 Preview 蓄势待发；智谱 GLM-5.2 在 SWE-bench Pro 上跑赢 GPT-5.5。国际、国内两块，逐条标到日。</p>
+  <div class="meta">整理于 2026 年 6 月 23 日&nbsp;&nbsp;·&nbsp;&nbsp;来源：buildfastwithai / OpenAI / Anthropic / Zhipu AI / CSDN 等公开渠道&nbsp;&nbsp;·&nbsp;&nbsp;点击各条"来源"可跳转原文</div>
+</header>
+
+<section class="strip">
+  <div class="strip-inner">
+    <div><b>62.1</b><span>GLM-5.2 SWE-bench Pro 得分，跑赢 GPT-5.5</span></div>
+    <div><b>$2950亿</b><span>6月22日 · 中国五年 AI 基建投资计划</span></div>
+    <div><b>85%</b><span>Agentjacking 跨 2388 家组织利用率</span></div>
+  </div>
+</section>
+
+<section class="section" id="global">
+  <div class="section-head">
+    <div class="kicker">Global · 国际</div>
+    <h2>国际 AI 资讯</h2>
+    <p>聚焦 6 月 22–23 日动态：旗舰模型密集临近发布，收购、安全与硬件三线齐发。</p>
+  </div>
+  <div class="grid">
+
+    <div class="card feature">
+      <div class="tagline"><span class="pill">事项 · 模型发布</span><span class="time">2026年6月23日</span></div>
+      <h3>Gemini 3.5 Pro 发布窗口锁定本周。</h3>
+      <p class="body">据 Polymarket 预测市场，谷歌 Gemini 3.5 Pro 的最可能发布窗口集中在 6 月 23 日与 6 月 30 日。该模型预计将带来 200 万 token 上下文窗口、Deep Think 推理模式与前沿多模态能力，剑指当前第一梯队。</p>
+      <div class="src"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026" target="_blank" rel="noopener">来源 · buildfastwithai / Polymarket</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 收购整合</span><span class="time">2026年6月（3月公布）</span></div>
+      <h3>OpenAI 收购 Astral，纳入 Codex 团队</h3>
+      <p class="body">OpenAI 收购 Python 工具链公司 Astral——uv 与 ruff 的开发方。uv 月下载量超 1.26 亿次、ruff 速度较传统工具快千倍。团队将并入 Codex，意在掌控 AI 编程智能体所需的快速可靠 Python 工具链。</p>
+      <div class="src"><a href="https://openai.com/index/openai-to-acquire-astral/" target="_blank" rel="noopener">来源 · OpenAI / Simon Willison</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 模型预告</span><span class="time">2026年6月22日</span></div>
+      <h3>GPT-5.6 Preview：对 5.5 的"有意义提升"</h3>
+      <p class="body">OpenAI 首席科学家透露 GPT-5.6 Preview 相比 GPT-5.5 实现"有意义的提升"，预计 6 月底发布。与 Gemini 3.5 Pro 的发布窗口高度重叠，旗舰模型竞速进入白热化。</p>
+      <div class="src"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026" target="_blank" rel="noopener">来源 · buildfastwithai / OpenAI</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 监管余波</span><span class="time">2026年6月22日</span></div>
+      <h3>Fable 5 免费试用窗口关闭，模型仍下线</h3>
+      <p class="body">Anthropic Fable 5 面向付费订阅用户的免费试用窗口于 6 月 22 日截止，6 月 23 日起需消耗付费额度。而该模型自 6 月 12 日因美国出口管制指令已下线，订阅者同时失去试用与访问。</p>
+      <div class="src"><a href="https://unrot.co/blogs/ai-news-today-june-20-2026" target="_blank" rel="noopener">来源 · unrot.co / Anthropic</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 安全风险</span><span class="time">2026年6月22日</span></div>
+      <h3>Agentjacking：编程智能体新型攻击曝光</h3>
+      <p class="body">安全社区披露名为 Agentjacking 的新型攻击，专门利用 AI 编程智能体，在 2388 家组织的测试中达到 85% 的利用成功率。智能体大规模上岗的同时，供应链与执行权限的安全隐患正被放大。</p>
+      <div class="src"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026" target="_blank" rel="noopener">来源 · buildfastwithai</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · AI 硬件</span><span class="time">2026年6月22日</span></div>
+      <h3>Snap Specs AR 眼镜：内置双 AI 引擎</h3>
+      <p class="body">Snap 推出售价 2195 美元的 Specs AR 眼镜，出厂即内置 OpenAI 与 Gemini API，主打设备端原生 AI 交互，抢在 Meta 同类产品之前卡位消费级 AI 可穿戴市场。</p>
+      <div class="src"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026" target="_blank" rel="noopener">来源 · buildfastwithai / Snap</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="china">
+  <div class="section-head">
+    <div class="kicker">China · 国内</div>
+    <h2>国内 AI 资讯</h2>
+    <p>开源跑赢闭源、基建与资本双轮驱动：GLM-5.2 登顶评测，国家级算力计划落地。</p>
+  </div>
+  <div class="grid">
+
+    <div class="card feature">
+      <div class="tagline"><span class="pill">事项 · 开源头条</span><span class="time">2026年6月22日</span></div>
+      <h3>智谱 GLM-5.2 在 SWE-bench Pro 跑赢 GPT-5.5。</h3>
+      <p class="body">智谱 AI 的 GLM-5.2 在 SWE-bench Pro 上取得 62.1 分，超过 GPT-5.5 的 58.6 分；以 MIT 协议开源、可自由商用，而推理成本仅为对手的约六分之一。国产开源模型在编程核心场景首次明确跑赢顶级闭源旗舰。</p>
+      <div class="src"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026" target="_blank" rel="noopener">来源 · buildfastwithai / Zhipu AI</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 国家基建</span><span class="time">2026年6月22日</span></div>
+      <h3>中国公布 2950 亿美元 AI 五年基建计划</h3>
+      <p class="body">中国政府宣布一项约 2950 亿美元的五年期 AI 基础设施投资计划，年均投入约 590 亿美元，覆盖算力、数据中心与配套电力。计划在中美出口管制持续紧张的背景下推出，意在夯实自主算力底座。</p>
+      <div class="src"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026" target="_blank" rel="noopener">来源 · buildfastwithai</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 旗舰模型</span><span class="time">2026年6月</span></div>
+      <h3>MiniMax M 系列旗舰：MSA 稀疏注意力</h3>
+      <p class="body">MiniMax 发布 M 系列旗舰模型，采用 MoE 稀疏架构与全新 MSA 稀疏注意力，激活参数约 23B，支持百万级超长上下文，编程评测能力已超越海外多款主流模型，主打长文档与智能体编排。</p>
+      <div class="src"><a href="https://agent.csdn.net/6a35e06e662f9a54cb82075d.html" target="_blank" rel="noopener">来源 · CSDN AI Agent 社区</a></div>
+    </div>
+
+    <div class="card">
+      <div class="tagline"><span class="pill">事项 · 资本市场</span><span class="time">2026年6月</span></div>
+      <h3>证监会将 AI 大模型企业纳入科创板第五套标准</h3>
+      <p class="body">证监会正式将 AI 大模型企业纳入科创板第五套上市标准，头部国产大模型公司纷纷冲刺 IPO。行业在融资、商业化与规范化层面全面提速，资本与产业形成双向加持。</p>
+      <div class="src"><a href="https://agent.csdn.net/6a35e06e662f9a54cb82075d.html" target="_blank" rel="noopener">来源 · CSDN AI Agent 社区</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="trends">
+  <div class="trends-inner">
+    <div class="section-head" style="margin-bottom:0">
+      <div class="kicker">Takeaways</div>
+      <h2>三条主线，看懂今天。</h2>
+    </div>
+    <div class="trend-list">
+      <div class="trend">
+        <span class="num">01</span>
+        <h4>旗舰模型竞速</h4>
+        <p>6月23日 · Gemini 3.5 Pro 与 GPT-5.6 Preview 发布窗口高度重叠，本周或集中亮相。</p>
+      </div>
+      <div class="trend">
+        <span class="num">02</span>
+        <h4>国产开源跑赢闭源</h4>
+        <p>6月22日 · GLM-5.2 在 SWE-bench Pro 以 62.1 超过 GPT-5.5，成本仅约六分之一。</p>
+      </div>
+      <div class="trend">
+        <span class="num">03</span>
+        <h4>安全与基建并行</h4>
+        <p>6月22日 · Agentjacking 敲响智能体安全警钟，中国 2950 亿基建夯实算力底座。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <b>每日AI资讯</b>（2026年6月23日 · 星期二）· 信息整理自
+    <a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026" target="_blank" rel="noopener">buildfastwithai</a>、
+    <a href="https://openai.com/index/openai-to-acquire-astral/" target="_blank" rel="noopener">OpenAI</a>、
+    <a href="https://unrot.co/blogs/ai-news-today-june-20-2026" target="_blank" rel="noopener">unrot.co</a>、
+    <a href="https://agent.csdn.net/6a35e06e662f9a54cb82075d.html" target="_blank" rel="noopener">CSDN</a>
+    等公开渠道，仅供参考。每条均标注确切报道日期。<br>
+    结构：国际AI资讯 / 国内AI资讯 两大板块 · 事项 – 日期 – 具体内容 – 来源渠道 · 整理日期 2026.6.23
+  </div>
+</footer>
+
+</body>
+</html>
